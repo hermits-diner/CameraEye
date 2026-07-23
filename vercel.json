@@ -1,4 +1,7 @@
 {
   "buildCommand": "pnpm run build",
-  "outputDirectory": "artifacts/cameraeye/dist/public"
+  "outputDirectory": "artifacts/cameraeye/dist/public",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
