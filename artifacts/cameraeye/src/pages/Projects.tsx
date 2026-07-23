@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { Link } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageTransition } from '@/components/PageTransition';
-import { mockProjects, ProjectCategory } from '@/data/mockData';
+import { useProjects } from '@/lib/content';
+import { useDocumentTitle } from '@/hooks/use-document-title';
+import type { ProjectCategory } from '@/data/mockData';
 
 const categories: { label: string; value: ProjectCategory | 'all' }[] = [
   { label: 'All', value: 'all' },
@@ -13,11 +15,13 @@ const categories: { label: string; value: ProjectCategory | 'all' }[] = [
 ];
 
 export default function Projects() {
+  useDocumentTitle('Archive');
   const [activeCategory, setActiveCategory] = useState<ProjectCategory | 'all'>('all');
+  const { data: projects = [] } = useProjects();
 
-  const filteredProjects = activeCategory === 'all' 
-    ? mockProjects 
-    : mockProjects.filter(p => p.category === activeCategory);
+  const filteredProjects = activeCategory === 'all'
+    ? projects
+    : projects.filter(p => p.category === activeCategory);
 
   return (
     <PageTransition className="pt-32 pb-24 px-6 md:px-12 max-w-[1800px] mx-auto">

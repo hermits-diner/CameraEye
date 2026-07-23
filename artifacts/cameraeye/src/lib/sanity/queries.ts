@@ -2,6 +2,7 @@ import { client } from './client';
 import type { Project, About } from './types';
 
 export async function getAllProjects(): Promise<Project[]> {
+  if (!client) return [];
   return client.fetch(
     `*[_type == "project"] | order(order asc, _createdAt desc) {
       _id,
@@ -18,6 +19,7 @@ export async function getAllProjects(): Promise<Project[]> {
 }
 
 export async function getFeaturedProjects(): Promise<Project[]> {
+  if (!client) return [];
   return client.fetch(
     `*[_type == "project" && featured == true] | order(order asc) {
       _id,
@@ -33,6 +35,7 @@ export async function getFeaturedProjects(): Promise<Project[]> {
 }
 
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
+  if (!client) return null;
   return client.fetch(
     `*[_type == "project" && slug.current == $slug][0] {
       _id,
@@ -50,5 +53,6 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
 }
 
 export async function getAbout(): Promise<About | null> {
+  if (!client) return null;
   return client.fetch(`*[_type == "about"][0]`);
 }

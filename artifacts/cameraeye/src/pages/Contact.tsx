@@ -6,7 +6,11 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { useDocumentTitle } from '@/hooks/use-document-title';
 import { PageTransition } from '@/components/PageTransition';
+
+// TODO: replace with the real inquiry address before going live.
+const CONTACT_EMAIL = 'studio@cameraeye.com';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name is required'),
@@ -17,8 +21,9 @@ const contactSchema = z.object({
 type ContactFormValues = z.infer<typeof contactSchema>;
 
 export default function Contact() {
+  useDocumentTitle('Inquiries');
   const { toast } = useToast();
-  
+
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -29,9 +34,14 @@ export default function Contact() {
   });
 
   const onSubmit = (data: ContactFormValues) => {
+    const subject = encodeURIComponent(`Inquiry from ${data.name}`);
+    const body = encodeURIComponent(
+      `${data.message}\n\n— ${data.name}\n${data.email}`,
+    );
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
     toast({
-      title: 'Message Sent',
-      description: 'Thank you for reaching out. We will get back to you shortly.',
+      title: 'Opening your email app',
+      description: 'Finish and send the message from your mail client to reach us.',
     });
     form.reset();
   };
@@ -49,7 +59,7 @@ export default function Contact() {
           <div className="flex flex-col gap-6 text-sm uppercase tracking-[0.2em] text-white/50">
             <div>
               <span className="block mb-2 text-white/30 text-xs">Email</span>
-              <a href="mailto:studio@cameraeye.com" className="text-white hover:opacity-70 transition-opacity">studio@cameraeye.com</a>
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-white hover:opacity-70 transition-opacity">{CONTACT_EMAIL}</a>
             </div>
             <div>
               <span className="block mb-2 text-white/30 text-xs">Studio</span>

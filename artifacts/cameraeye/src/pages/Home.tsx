@@ -3,13 +3,18 @@ import { Link } from 'wouter';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { PageTransition } from '@/components/PageTransition';
-import { mockProjects } from '@/data/mockData';
+import { useProjects } from '@/lib/content';
+import { useDocumentTitle } from '@/hooks/use-document-title';
 import { ArrowRight } from 'lucide-react';
 
 export default function Home() {
+  useDocumentTitle();
   const containerRef = useRef<HTMLDivElement>(null);
   const filmstripRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+
+  const { data: projects = [] } = useProjects();
+  const featuredProjects = projects.filter(p => p.featured);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -43,9 +48,7 @@ export default function Home() {
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
-
-  const featuredProjects = mockProjects.filter(p => p.featured);
+  }, [featuredProjects.length]);
 
   return (
     <PageTransition>
@@ -53,8 +56,8 @@ export default function Home() {
         {/* Hero Section */}
         <section className="h-screen w-full flex flex-col items-center justify-center relative overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <img 
-              src={mockProjects[0]?.coverImageUrl} 
+            <img
+              src={projects[0]?.coverImageUrl}
               alt="Hero background"
               className="w-full h-full object-cover opacity-30 object-center"
             />
