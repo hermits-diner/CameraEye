@@ -44,6 +44,15 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, 'dist/public'),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-animation': ['framer-motion', 'gsap'],
+          'vendor-sanity': ['@sanity/client', '@sanity/image-url'],
+        },
+      },
+    },
   },
   server: {
     port,
