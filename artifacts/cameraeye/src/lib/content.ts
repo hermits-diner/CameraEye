@@ -10,21 +10,23 @@ import type {
   Project as SanityProject,
   ProjectCategory,
 } from './sanity/types';
-import { mockProjects, aboutData, type MockProject } from '@/data/mockData';
+import { mockProjects, aboutData, type MockProject, type FilmFormatTag, type GearSpecs } from '@/data/mockData';
+import type { LocationMarker } from '@/components/PhotoLocationMap';
+import type { PrintEdition } from '@/types/commerce';
 
-/**
- * Normalized view models the pages render. Both Sanity documents and the local
- * mock data are mapped into these shapes, so pages never care where data came
- * from. When Sanity is unconfigured or a fetch fails, mock data is used.
- */
 export interface ProjectView {
   id: string;
   title: string;
   slug: string;
   category: ProjectCategory;
+  filmFormat: FilmFormatTag;
   year?: number;
   client?: string;
   description: string;
+  behindTheScenes: string;
+  gear: GearSpecs;
+  locations: LocationMarker[];
+  edition: PrintEdition;
   featured: boolean;
   coverImageUrl: string;
   imageUrls: string[];
@@ -43,27 +45,41 @@ function fromMockProject(p: MockProject): ProjectView {
     title: p.title,
     slug: p.slug,
     category: p.category,
+    filmFormat: p.filmFormat,
     year: p.year,
     client: p.client,
     description: p.description,
+    behindTheScenes: p.behindTheScenes,
+    gear: p.gear,
+    locations: p.locations,
+    edition: p.edition,
     featured: p.featured,
     coverImageUrl: p.coverImageUrl,
     imageUrls: p.imageUrls,
   };
 }
 
-function fromSanityProject(p: SanityProject): ProjectView {
+function fromSanityProject(p: any): ProjectView {
+  const fallback = mockProjects.find((m) => m.slug === p.slug?.current) || mockProjects[0];
+
   return {
     id: p._id,
     title: p.title,
     slug: p.slug?.current ?? '',
-    category: p.category,
-    year: p.year,
-    client: p.client,
-    description: p.description ?? '',
+    category: p.category ?? fallback.category,
+    filmFormat: p.filmFormat ?? fallback.filmFormat,
+    year: p.year ?? fallback.year,
+    client: p.client ?? fallback.client,
+    description: p.description ?? fallback.description,
+    behindTheScenes: p.behindTheScenes ?? fallback.behindTheScenes,
+    gear: p.gearDetails ?? fallback.gear,
+    locations: p.locations ?? fallback.locations,
+    edition: p.edition ?? fallback.edition,
     featured: Boolean(p.featured),
-    coverImageUrl: urlForImage(p.coverImage),
-    imageUrls: (p.images ?? []).map(urlForImage).filter(Boolean),
+    coverImageUrl: urlForImage(p.coverImage) || fallback.coverImageUrl,
+    imageUrls: (p.images ?? []).map(urlForImage).filter(Boolean).length > 0
+      ? (p.images ?? []).map(urlForImage).filter(Boolean)
+      : fallback.imageUrls,
   };
 }
 
@@ -124,7 +140,7 @@ export function useAbout() {
           console.error('Sanity getAbout failed; using mock data.', err);
         }
       }
-      return { bio: aboutData.bio, portraitUrl: aboutData.portraitUrl };
+      return { bio: aboutData.bio, portraitUrl: aboutData.portraitUrl, contactEmail: aboutData.contactEmail, skills: aboutData.skills };
     },
   });
 }
