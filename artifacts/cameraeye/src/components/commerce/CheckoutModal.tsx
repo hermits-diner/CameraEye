@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X, CheckCircle2, ShieldCheck, Download, Truck, CreditCard } from 'lucide-react';
-import type { PrintEdition, PrintSizeOption, ProductType, Order } from '@/types/commerce';
+import type { PrintEdition, PrintSizeOption, ProductType, Order, ShippingCountry } from '@/types/commerce';
 import { calculateShippingFee } from '@/lib/shipping';
 import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/hooks/use-toast';
@@ -37,7 +37,7 @@ export function CheckoutModal({
     }
   );
 
-  const [country, setCountry] = useState<'KR' | 'US' | 'JP' | 'EU' | 'WW'>('KR');
+  const [country, setCountry] = useState<ShippingCountry>('KR');
   const [customerEmail, setCustomerEmail] = useState(user?.email || '');
   const [recipientName, setRecipientName] = useState(user?.name || '');
   const [address, setAddress] = useState('');
@@ -284,7 +284,7 @@ export function CheckoutModal({
                     <span className="text-white/50 uppercase tracking-widest text-[10px]">Shipping Destination</span>
                     <select
                       value={country}
-                      onChange={(e) => setCountry(e.target.value as any)}
+                      onChange={(e) => setCountry(e.target.value as ShippingCountry)}
                       className="bg-black border border-white/20 text-white px-3 py-1 text-xs focus:outline-none"
                     >
                       <option value="KR">Korea (국내 배송)</option>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { PageTransition } from '@/components/PageTransition';
 import { useAuth } from '@/context/AuthContext';
-import { Package, Download, Truck, CheckCircle2, Clock, Mail } from 'lucide-react';
+import { Package, Download, Truck, Clock, Mail } from 'lucide-react';
 import { useDocumentTitle } from '@/hooks/use-document-title';
 import type { OrderStatus } from '@/types/commerce';
 

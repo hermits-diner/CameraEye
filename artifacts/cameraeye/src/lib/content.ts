@@ -6,10 +6,7 @@ import {
   getAbout,
 } from './sanity/queries';
 import { urlForImage } from './sanity/image';
-import type {
-  Project as SanityProject,
-  ProjectCategory,
-} from './sanity/types';
+import type { Project as SanityProject, ProjectCategory } from './sanity/types';
 import { mockProjects, aboutData, type MockProject, type FilmFormatTag, type GearSpecs } from '@/data/mockData';
 import type { LocationMarker } from '@/components/PhotoLocationMap';
 import type { PrintEdition } from '@/types/commerce';
@@ -59,8 +56,11 @@ function fromMockProject(p: MockProject): ProjectView {
   };
 }
 
-function fromSanityProject(p: any): ProjectView {
+function fromSanityProject(p: SanityProject): ProjectView {
   const fallback = mockProjects.find((m) => m.slug === p.slug?.current) || mockProjects[0];
+  const imageUrls = p.images
+    .map(urlForImage)
+    .filter((url): url is string => url.length > 0);
 
   return {
     id: p._id,
@@ -77,9 +77,7 @@ function fromSanityProject(p: any): ProjectView {
     edition: p.edition ?? fallback.edition,
     featured: Boolean(p.featured),
     coverImageUrl: urlForImage(p.coverImage) || fallback.coverImageUrl,
-    imageUrls: (p.images ?? []).map(urlForImage).filter(Boolean).length > 0
-      ? (p.images ?? []).map(urlForImage).filter(Boolean)
-      : fallback.imageUrls,
+    imageUrls: imageUrls.length > 0 ? imageUrls : fallback.imageUrls,
   };
 }
 

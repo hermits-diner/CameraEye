@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { motion } from 'framer-motion';
-import { Heart, ShoppingBag, User, Sun, Moon, Mail, Menu, X } from 'lucide-react';
+import { Heart, User, Mail, Menu, X } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 import { useWishlist } from '@/context/WishlistContext';
 import { useAuth } from '@/context/AuthContext';

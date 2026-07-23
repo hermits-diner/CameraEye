@@ -1,3 +1,5 @@
+type RequiredRule = { required: () => unknown };
+
 export default {
   name: 'about',
   title: 'About Page',
@@ -7,7 +9,7 @@ export default {
       name: 'bio',
       title: 'Biography / Artist Statement',
       type: 'text',
-      validation: (Rule: any) => Rule.required(),
+      validation: (rule: RequiredRule) => rule.required(),
     },
     {
       name: 'portrait',

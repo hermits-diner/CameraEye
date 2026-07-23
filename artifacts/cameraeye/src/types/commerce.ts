@@ -1,4 +1,5 @@
 export type ProductType = 'print' | 'digital';
+export type ShippingCountry = 'KR' | 'US' | 'JP' | 'EU' | 'WW';
 
 export interface PrintSizeOption {
   id: string;
@@ -24,7 +25,7 @@ export interface ShippingDetails {
   address: string;
   city: string;
   postalCode: string;
-  country: 'KR' | 'US' | 'JP' | 'EU' | 'WW';
+  country: ShippingCountry;
 }
 
 export interface OrderItem {

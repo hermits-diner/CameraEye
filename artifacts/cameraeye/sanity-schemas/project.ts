@@ -1,3 +1,5 @@
+type RequiredRule = { required: () => unknown };
+
 export default {
   name: 'project',
   title: 'Project',
@@ -7,7 +9,7 @@ export default {
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule: any) => Rule.required(),
+      validation: (rule: RequiredRule) => rule.required(),
     },
     {
       name: 'slug',
@@ -17,7 +19,7 @@ export default {
         source: 'title',
         maxLength: 96,
       },
-      validation: (Rule: any) => Rule.required(),
+      validation: (rule: RequiredRule) => rule.required(),
     },
     {
       name: 'category',

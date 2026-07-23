@@ -1,5 +1,7 @@
+import type { ShippingCountry } from '@/types/commerce';
+
 export interface ShippingCalculationInput {
-  country: 'KR' | 'US' | 'JP' | 'EU' | 'WW';
+  country: ShippingCountry;
   totalWeightKg: number;
   isDigitalOnly: boolean;
 }

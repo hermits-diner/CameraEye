@@ -1,7 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { Link } from 'wouter';
 import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 import { PageTransition } from '@/components/PageTransition';
 import { useProjects } from '@/lib/content';
 import { useDocumentTitle } from '@/hooks/use-document-title';
@@ -32,7 +31,7 @@ export default function Home() {
 
       // Horizontal scroll for filmstrip
       const sections = gsap.utils.toArray('.film-item');
-      if (filmstripRef.current && sections.length > 0) {
+      if (filmstripRef.current && sections.length > 1) {
         gsap.to(sections, {
           xPercent: -100 * (sections.length - 1),
           ease: 'none',
@@ -77,7 +76,7 @@ export default function Home() {
         {/* Horizontal Film Strip */}
         <section ref={filmstripRef} className="h-screen w-full flex items-center overflow-hidden bg-background">
           <div className="flex w-max items-center h-[70vh] pl-[10vw]">
-            {featuredProjects.map((project, index) => (
+            {featuredProjects.map((project) => (
               <div 
                 key={project.id} 
                 className="film-item w-[70vw] md:w-[50vw] lg:w-[40vw] h-full flex-shrink-0 mr-[10vw] relative group"

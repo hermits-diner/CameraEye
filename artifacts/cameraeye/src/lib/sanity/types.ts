@@ -1,3 +1,7 @@
+import type { LocationMarker } from '@/components/PhotoLocationMap';
+import type { FilmFormatTag, GearSpecs } from '@/data/mockData';
+import type { PrintEdition } from '@/types/commerce';
+
 export type ProjectCategory =
   | 'editorial'
   | 'portrait'
@@ -26,6 +30,11 @@ export interface Project {
   client?: string;
   featured?: boolean;
   order?: number;
+  filmFormat?: FilmFormatTag;
+  behindTheScenes?: string;
+  gearDetails?: GearSpecs;
+  locations?: LocationMarker[];
+  edition?: PrintEdition;
 }
 
 export interface About {

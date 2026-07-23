@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\JunghoonOh\\\\바탕 화면\\\\CamerEye\\\\artifacts\\\\cameraeye\\\\public\\\\images\" | Select-Object Name, @{N='SizeMB';E={[math]::Round\\($_.Length/1MB,2\\)}})"
+    ]
+  }
+}
