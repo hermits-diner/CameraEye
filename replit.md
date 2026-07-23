@@ -1,44 +1,69 @@
-# [Project name]
+# CameraEye
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Photography portfolio + print shop: editorial/campaign/personal series with series notes, capture-format tags and shooting-location maps, plus a commerce layer for limited-edition prints and digital downloads (manual order confirmation, no online payment yet).
 
 ## Run & Operate
 
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/cameraeye run dev` — run the web app (needs `PORT`, `BASE_PATH` env)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
+- `pnpm --filter @workspace/scripts run generate-sitemap` — regenerate `public/sitemap.xml`
 - Required env: `DATABASE_URL` — Postgres connection string
+- Optional env: `ADMIN_EMAILS` (comma-separated admin accounts), `SMTP_HOST/PORT/USER/PASS/FROM` (order emails; logged to console when unset), `INSTAGRAM_ACCESS_TOKEN` (footer feed), `DIGITAL_FILE_BASE_URL` (real digital files), `PUBLIC_SITE_URL`, `VITE_SANITY_PROJECT_ID` / `VITE_SANITY_DATASET` (live CMS content), `VITE_SITE_URL`
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
+- API: Express 5 (cookie sessions, scrypt password hashing)
 - DB: PostgreSQL + Drizzle ORM
 - Validation: Zod (`zod/v4`), `drizzle-zod`
 - API codegen: Orval (from OpenAPI spec)
+- Web: Vite + React 19, wouter, TanStack Query, Tailwind 4, GSAP/framer-motion, react-leaflet, next-themes
+- CMS: Sanity (optional — falls back to bundled mock data)
 - Build: esbuild (CJS bundle)
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `lib/commerce` — **source of truth for the shop**: product catalog (sizes/prices/editions), shipping calculator (weight + zone based), order-status state machine. Shared by API and web.
+- `lib/db/src/schema` — Drizzle tables: users, sessions, orders, order_items, download_tokens, wishlists, newsletter_subscribers
+- `lib/api-spec/openapi.yaml` — API contract; `fix-zod-imports.mjs` rewrites generated zod imports to `zod/v4` after Orval runs
+- `artifacts/api-server/src/routes` — auth, shop (inventory), orders, wishlist, newsletter, downloads, instagram (proxy), admin
+- `artifacts/api-server/src/lib` — auth (sessions/scrypt), mailer (SMTP or log fallback), orders (order numbers, sold counts)
+- `artifacts/cameraeye/src/lib/content/adapter.ts` — content adapter: Sanity when `VITE_SANITY_PROJECT_ID` set, otherwise `src/data/mockData.ts`
+- `artifacts/cameraeye/src/pages` — Home, Projects, ProjectDetail (lightbox/story/map/prints), Shop, ShopProduct, Checkout, Login/Register, Account, Admin, MapPage
+- `artifacts/cameraeye/sanity/schemas` — Sanity Studio schema files (copy into a Studio project; not compiled here)
+- `scripts/src/generate-sitemap.ts` — writes `artifacts/cameraeye/public/sitemap.xml`
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Prices/stock rules live in the static catalog (`lib/commerce`), DB stores only transactional state; server always re-derives prices — client amounts are never trusted.
+- Limited-edition stock is enforced in the order transaction via pg advisory locks + non-cancelled sold counts (no separate inventory table to drift).
+- Print orders: `pending` → manual confirm → production → shipped → delivered (emails on each change). Digital-only orders complete instantly and mint expiring, download-limited tokens.
+- Auth is cookie-session based (`ce_session`, 30d); admins are whitelisted via `ADMIN_EMAILS` env.
+- Wishlist works logged-out (localStorage) and merges into the account on login.
+- Theme: light is `:root`, dark is `.dark` via next-themes (default dark). Platform-native binary overrides in `pnpm-workspace.yaml` keep linux-x64 (Replit) and win32-x64 (local dev).
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Portfolio with per-series notes (story, camera, film stock, lenses), format badges (35mm/120/digital), fullscreen lightbox with swipe gestures, geotagged shooting-location maps (per-project + global `/map`).
+- Shop: limited-edition prints with live remaining counts and sold-out state, size-based pricing, weight/zone shipping estimator (KR free threshold), digital editions with instant download links.
+- Accounts: order history with status timeline, download center, wishlist; admin dashboard at `/admin` for status transitions + tracking numbers.
+- Newsletter signup + Instagram strip in the footer; per-page SEO with OG/JSON-LD, sitemap.xml, robots.txt.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- 결제 연동(Stripe 등 온라인 결제)은 **의도적으로 제외** — 프린트는 수동 주문 확인, 디지털은 자동 다운로드 발송 방식 유지.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- After editing `lib/api-spec/openapi.yaml`, always run codegen; it also re-runs `tsc --build` for libs.
+- Orval may append duplicate export lines to `lib/api-client-react/src/index.ts` — keep it deduplicated.
+- Generated query hooks require an explicit `queryKey` in `query` options (TanStack Query v5 types) — use the generated `get*QueryKey()` helpers.
+- `vite.config.ts` throws without `PORT` and `BASE_PATH` env vars.
+- Sanity studio schema files import the `sanity` package (not installed here) and are excluded from the web app's tsconfig include — don't import them from `src/`.
 
 ## Pointers
 

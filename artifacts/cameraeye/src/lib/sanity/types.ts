@@ -4,6 +4,8 @@ export type ProjectCategory =
   | 'campaign'
   | 'personal';
 
+export type CaptureFormat = '35mm' | '120' | 'digital';
+
 export interface SanityImage {
   _type: 'image';
   asset: {
@@ -13,6 +15,19 @@ export interface SanityImage {
   alt?: string;
 }
 
+export interface SanityGeopoint {
+  _type: 'geopoint';
+  lat: number;
+  lng: number;
+  alt?: number;
+}
+
+export interface SanityProjectImage extends SanityImage {
+  /** Where the photo was taken (for the location map). */
+  location?: SanityGeopoint;
+  locationLabel?: string;
+}
+
 export interface Project {
   _id: string;
   _type: 'project';
@@ -20,8 +35,14 @@ export interface Project {
   slug: { current: string };
   category: ProjectCategory;
   coverImage: SanityImage;
-  images: SanityImage[];
+  images?: SanityProjectImage[];
   description?: string;
+  /** Long-form series notes / behind-the-scenes story. */
+  story?: string;
+  format?: CaptureFormat;
+  filmStock?: string;
+  camera?: string;
+  lenses?: string[];
   year?: number;
   client?: string;
   featured?: boolean;
@@ -35,4 +56,5 @@ export interface About {
   portrait: SanityImage;
   skills?: string[];
   contactEmail?: string;
+  instagramHandle?: string;
 }

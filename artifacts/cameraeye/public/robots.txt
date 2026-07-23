@@ -1,2 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /account
+Disallow: /admin
+Disallow: /checkout
+Disallow: /login
+Disallow: /register
+
+Sitemap: https://cameraeye.studio/sitemap.xml
