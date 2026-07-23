@@ -119,9 +119,9 @@
   --chart-4: 0 0% 60%;
   --chart-5: 0 0% 50%;
 
-  --app-font-sans: 'DM Sans', sans-serif;
-  --app-font-serif: 'Cormorant Garamond', serif;
-  --app-font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --app-font-sans: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  --app-font-serif: 'Bodoni Moda', Didot, 'Times New Roman', serif;
+  --app-font-mono: 'IBM Plex Mono', 'SF Mono', Menlo, Consolas, monospace;
   
   --radius: 0rem; /* Sharp edges for minimal editorial feel */
   
@@ -236,6 +236,7 @@ html.light-mode {
 
   body {
     @apply font-sans antialiased bg-background text-foreground overflow-x-hidden;
+    font-feature-settings: 'kern' 1, 'liga' 1;
     /* Custom scrollbar for webkit */
     &::-webkit-scrollbar {
       width: 8px;
@@ -250,6 +251,9 @@ html.light-mode {
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
+    font-optical-sizing: auto;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
   }
 }
 
