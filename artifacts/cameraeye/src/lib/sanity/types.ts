@@ -1,8 +1,5 @@
-export type ProjectCategory =
-  | 'editorial'
-  | 'portrait'
-  | 'campaign'
-  | 'personal';
+/** Genre slug — canonical list lives in the Sanity schema. */
+export type ProjectCategory = string;
 
 export type CaptureFormat = '35mm' | '120' | 'digital';
 

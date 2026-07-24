@@ -10,6 +10,7 @@ import { MapView, type MapPin } from '@/components/MapView';
 import { Seo } from '@/components/Seo';
 import NotFound from '@/pages/not-found';
 import { useProject } from '@/lib/content/adapter';
+import { categoryLabel } from '@/lib/content/types';
 import { getProductsForProject } from '@workspace/commerce';
 import { urlFor } from '@/lib/sanity/image';
 import { formatKRW } from '@/lib/format';
@@ -121,7 +122,7 @@ export default function ProjectDetail() {
             </div>
             <div className="border-t border-border pt-4 flex justify-between">
               <span className="uppercase tracking-[0.2em] text-muted-foreground text-xs">Category</span>
-              <span className="font-serif text-base capitalize">{project.category}</span>
+              <span className="font-serif text-base">{categoryLabel(project.category)}</span>
             </div>
             <div className="border-t border-border pt-4 flex justify-between items-center">
               <span className="uppercase tracking-[0.2em] text-muted-foreground text-xs">Format</span>

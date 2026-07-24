@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PageTransition } from '@/components/PageTransition';
@@ -6,19 +6,21 @@ import { OptimizedImage } from '@/components/OptimizedImage';
 import { FormatBadge } from '@/components/FormatBadge';
 import { Seo } from '@/components/Seo';
 import { useProjects } from '@/lib/content/adapter';
-import type { ProjectCategory } from '@/lib/content/types';
-
-const categories: { label: string; value: ProjectCategory | 'all' }[] = [
-  { label: 'All', value: 'all' },
-  { label: 'Editorial', value: 'editorial' },
-  { label: 'Portrait', value: 'portrait' },
-  { label: 'Campaign', value: 'campaign' },
-  { label: 'Personal', value: 'personal' },
-];
+import { categoryLabel, type ProjectCategory } from '@/lib/content/types';
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory | 'all'>('all');
   const { projects } = useProjects();
+
+  // Filter chips follow the genres actually present in the content, so new
+  // categories added in the CMS appear here without a code change.
+  const categories = useMemo(() => {
+    const present = [...new Set(projects.map((p) => p.category))];
+    return [
+      { label: 'All', value: 'all' as const },
+      ...present.map((value) => ({ label: categoryLabel(value), value })),
+    ];
+  }, [projects]);
 
   const filteredProjects =
     activeCategory === 'all'
@@ -89,7 +91,7 @@ export default function Projects() {
                 <div>
                   <h3 className="text-xl font-serif">{project.title}</h3>
                   <p className="text-xs text-muted-foreground uppercase tracking-wider mt-1">
-                    {project.category}
+                    {categoryLabel(project.category)}
                   </p>
                 </div>
                 <span className="text-xs text-muted-foreground">{project.year}</span>

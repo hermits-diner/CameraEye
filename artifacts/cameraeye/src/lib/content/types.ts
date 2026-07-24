@@ -59,3 +59,27 @@ export const FORMAT_LABELS: Record<CaptureFormat, string> = {
   '120': 'Medium Format',
   digital: 'Digital',
 };
+
+/** Pretty labels for known genre slugs (mirrors the Sanity schema list). */
+export const CATEGORY_LABELS: Record<string, string> = {
+  editorial: 'Editorial',
+  portrait: 'Portrait',
+  campaign: 'Campaign',
+  fashion: 'Fashion',
+  street: 'Street',
+  documentary: 'Documentary',
+  landscape: 'Landscape',
+  architecture: 'Architecture',
+  'still-life': 'Still Life',
+  travel: 'Travel',
+  event: 'Event',
+  personal: 'Personal',
+};
+
+/** Label for a genre slug; unknown slugs get title-cased with spaces. */
+export function categoryLabel(category: string): string {
+  return (
+    CATEGORY_LABELS[category] ??
+    category.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
+  );
+}

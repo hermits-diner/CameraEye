@@ -9,6 +9,8 @@
     "seed": "sanity exec seed.mjs --with-user-token"
   },
   "dependencies": {
+    "@sanity/icons": "^3.7.0",
+    "@sanity/ui": "^3.1.0",
     "@sanity/vision": "^4.22.0",
     "react": "catalog:",
     "react-dom": "catalog:",

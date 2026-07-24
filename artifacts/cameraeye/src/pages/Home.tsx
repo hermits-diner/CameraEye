@@ -6,6 +6,7 @@ import { PageTransition } from '@/components/PageTransition';
 import { OptimizedImage } from '@/components/OptimizedImage';
 import { Seo } from '@/components/Seo';
 import { useProjects } from '@/lib/content/adapter';
+import { categoryLabel } from '@/lib/content/types';
 import { ArrowRight } from 'lucide-react';
 
 export default function Home() {
@@ -114,7 +115,7 @@ export default function Home() {
                     <h2 className="text-3xl font-serif text-white">{project.title}</h2>
                     <div className="flex items-center gap-4 mt-2">
                       <span className="text-xs uppercase tracking-widest text-white/70">
-                        {project.category}
+                        {categoryLabel(project.category)}
                       </span>
                       <span className="text-xs text-white/50">{project.year}</span>
                     </div>

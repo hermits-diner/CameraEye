@@ -1,4 +1,9 @@
-export type ProjectCategory = 'editorial' | 'portrait' | 'campaign' | 'personal';
+/**
+ * Photography genre slug. Open string: the canonical genre list lives in
+ * the Sanity schema (studio/schemaTypes/project.ts) and may grow without
+ * frontend changes. Known slugs get pretty labels via CATEGORY_LABELS.
+ */
+export type ProjectCategory = string;
 export type CaptureFormat = '35mm' | '120' | 'digital';
 
 export interface MockPhotoLocation {

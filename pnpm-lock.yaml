@@ -680,6 +680,12 @@ importers:
 
   studio:
     dependencies:
+      '@sanity/icons':
+        specifier: ^3.7.0
+        version: 3.8.0(react@19.1.0)
+      '@sanity/ui':
+        specifier: ^3.1.0
+        version: 3.4.3(@emotion/is-prop-valid@1.4.0)(react-dom@19.1.0(react@19.1.0))(react-is@19.2.8)(react@19.1.0)(styled-components@6.4.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
       '@sanity/vision':
         specifier: ^4.22.0
         version: 4.22.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.1.0(react@19.1.0))(react-is@19.2.8)(react@19.1.0)(sanity@4.22.0(@emotion/is-prop-valid@1.4.0)(@portabletext/sanity-bridge@1.2.14(@types/react@19.2.17)(supports-color@8.1.1))(@types/node@25.9.5)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(jiti@2.7.0)(lightningcss@1.32.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(styled-components@6.4.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(supports-color@8.1.1)(tsx@4.23.1)(typescript@5.9.3)(yaml@2.9.0))(styled-components@6.4.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))

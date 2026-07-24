@@ -1,13 +1,21 @@
-/**
- * Sanity schema for portfolio projects.
- *
- * Setup: create a Sanity project (sanity.io), copy the files in
- * `sanity/schemas/` into its schema folder, then set VITE_SANITY_PROJECT_ID
- * (and optionally VITE_SANITY_DATASET, default "production") for the web
- * app. When the env var is present the site reads live Sanity content;
- * otherwise it falls back to the bundled mock data.
- */
 import { defineField, defineType } from 'sanity';
+import { BulkImagesInput } from '../components/BulkImagesInput';
+
+/** Photography genres available as project categories. */
+export const PROJECT_CATEGORIES = [
+  { title: 'Editorial', value: 'editorial' },
+  { title: 'Portrait', value: 'portrait' },
+  { title: 'Campaign / Commercial', value: 'campaign' },
+  { title: 'Fashion', value: 'fashion' },
+  { title: 'Street', value: 'street' },
+  { title: 'Documentary', value: 'documentary' },
+  { title: 'Landscape', value: 'landscape' },
+  { title: 'Architecture', value: 'architecture' },
+  { title: 'Still Life', value: 'still-life' },
+  { title: 'Travel', value: 'travel' },
+  { title: 'Event', value: 'event' },
+  { title: 'Personal', value: 'personal' },
+];
 
 export const project = defineType({
   name: 'project',
@@ -31,14 +39,10 @@ export const project = defineType({
       name: 'category',
       title: 'Category',
       type: 'string',
+      description: '프로젝트의 사진 장르입니다.',
       options: {
-        list: [
-          { title: 'Editorial', value: 'editorial' },
-          { title: 'Portrait', value: 'portrait' },
-          { title: 'Campaign', value: 'campaign' },
-          { title: 'Personal', value: 'personal' },
-        ],
-        layout: 'radio',
+        list: PROJECT_CATEGORIES,
+        layout: 'dropdown',
       },
       validation: (rule) => rule.required(),
     }),
@@ -54,6 +58,10 @@ export const project = defineType({
       name: 'images',
       title: 'Images',
       type: 'array',
+      description:
+        '여러 장을 한 번에 올리려면 파일들을 선택해 이 영역으로 드래그하세요. 한 장당 한 항목이 자동 생성됩니다.',
+      options: { layout: 'grid' },
+      components: { input: BulkImagesInput },
       of: [
         {
           type: 'image',
