@@ -2,7 +2,10 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "installCommand": "pnpm install",
-  "buildCommand": "PORT=3000 BASE_PATH=/ pnpm --filter @workspace/cameraeye run build",
+  "buildCommand": "PORT=3000 BASE_PATH=/ pnpm --filter @workspace/cameraeye run build && pnpm --filter @workspace/api-server run build",
   "outputDirectory": "artifacts/cameraeye/dist/public",
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
