@@ -57,6 +57,11 @@ Photography portfolio + print shop: editorial/campaign/personal series with seri
 
 - 결제 연동(Stripe 등 온라인 결제)은 **의도적으로 제외** — 프린트는 수동 주문 확인, 디지털은 자동 다운로드 발송 방식 유지.
 
+## Deployment
+
+- Replit: full stack (web + API + Postgres) via the artifact configs.
+- Vercel: `vercel.json` builds **only** the static frontend (`artifacts/cameraeye`) with SPA rewrites — the Express API does not run on Vercel, so API-backed features (orders, auth, inventory, wishlist sync) are inactive there; the frontend degrades gracefully. Host the API elsewhere and point the frontend at it if full features are needed on Vercel.
+
 ## Gotchas
 
 - After editing `lib/api-spec/openapi.yaml`, always run codegen; it also re-runs `tsc --build` for libs.
