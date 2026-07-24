@@ -63,6 +63,20 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, 'dist/public'),
     emptyOutDir: true,
+    rollupOptions: {
+      onwarn(warning, warn) {
+        // Radix/shadcn ship "use client" directives that are meaningless in
+        // a Vite SPA — Rollup ignores them and then fails to map the warning
+        // position through sourcemaps. Both messages are pure noise here.
+        if (
+          warning.code === 'MODULE_LEVEL_DIRECTIVE' ||
+          warning.code === 'SOURCEMAP_ERROR'
+        ) {
+          return;
+        }
+        warn(warning);
+      },
+    },
   },
   server: {
     port,
