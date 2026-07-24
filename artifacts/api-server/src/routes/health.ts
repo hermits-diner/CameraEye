@@ -17,10 +17,21 @@ router.get("/healthz", (_req, res) => {
  * diagnosable from a browser.
  */
 router.get("/healthz/db", async (_req, res) => {
+  // Only ever echo a parsed hostname — raw values can contain credentials
+  // in unexpected places when the env var is malformed.
   const raw = process.env.DATABASE_URL ?? "";
-  const maskedHost = raw
-    .replace(/\/\/[^@/]*@/, "//***:***@")
-    .split("?")[0];
+  let maskedHost: string;
+  if (!raw) {
+    maskedHost = "(DATABASE_URL not set)";
+  } else {
+    try {
+      const parsed = new URL(raw);
+      maskedHost = `${parsed.hostname}:${parsed.port || "5432"}`;
+    } catch {
+      maskedHost =
+        "(unparseable DATABASE_URL — check for duplicated paste, brackets or special characters in the password)";
+    }
+  }
   try {
     await db.execute(sql`select 1`);
     res.json({ ok: true, host: maskedHost });
