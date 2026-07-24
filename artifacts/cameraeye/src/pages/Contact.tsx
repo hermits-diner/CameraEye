@@ -44,7 +44,7 @@ export default function Contact() {
     <PageTransition className="min-h-screen pt-32 pb-24 px-6 md:px-12 max-w-[1200px] mx-auto flex items-center">
       <Seo
         title="Contact"
-        description="Commissions, print sales and general inquiries — get in touch with CameraEye Studio in New York."
+        description="Commissions, print sales and general inquiries — get in touch with Walden View, street photographer based in South Korea."
         path="/contact"
       />
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
@@ -52,23 +52,24 @@ export default function Contact() {
           <h1 className="text-5xl md:text-7xl font-serif tracking-tight font-light mb-8">
             Inquiries
           </h1>
-          <p className="text-muted-foreground font-serif text-lg leading-relaxed max-w-md mb-12">
-            For commissions, print sales, or general inquiries, please fill out the form or reach out directly.
+          <p className="text-muted-foreground font-serif text-lg leading-relaxed max-w-md mb-4">
+            For commissions, print sales, or general inquiries, please fill out
+            the form or reach out directly.
+          </p>
+          <p className="text-muted-foreground/80 font-serif text-base leading-relaxed max-w-md mb-12">
+            촬영 의뢰, 프린트 구매, 기타 문의는 폼을 작성해 주시거나 이메일로
+            연락해 주세요.
           </p>
           <div className="flex flex-col gap-6 text-sm uppercase tracking-[0.2em] text-muted-foreground">
             <div>
               <span className="block mb-2 text-muted-foreground/60 text-xs">Email</span>
-              <a href="mailto:studio@cameraeye.com" className="text-foreground hover:opacity-70 transition-opacity">
-                studio@cameraeye.com
+              <a href="mailto:hermitsdiner@gmail.com" className="text-foreground hover:opacity-70 transition-opacity">
+                hermitsdiner@gmail.com
               </a>
             </div>
             <div>
-              <span className="block mb-2 text-muted-foreground/60 text-xs">Studio</span>
-              <span className="text-foreground">
-                100 Bowery, New York
-                <br />
-                NY 10013
-              </span>
+              <span className="block mb-2 text-muted-foreground/60 text-xs">Based in</span>
+              <span className="text-foreground">South Korea</span>
             </div>
           </div>
         </div>

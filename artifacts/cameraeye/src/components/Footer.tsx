@@ -7,7 +7,7 @@ import {
   useSubscribeNewsletter,
 } from '@workspace/api-client-react';
 import { useToast } from '@/hooks/use-toast';
-import { aboutData } from '@/data/mockData';
+import { useAboutContent } from '@/lib/content/adapter';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -83,7 +83,9 @@ function InstagramStrip() {
     },
   });
   const posts = feed.data?.posts ?? [];
-  const handle = aboutData.instagramHandle;
+  const { about } = useAboutContent();
+  const handle = about.instagramHandle;
+  if (!handle) return null;
 
   return (
     <div className="flex flex-col gap-4">
@@ -127,11 +129,13 @@ export function Footer() {
         <div className="flex flex-col justify-between gap-12 md:flex-row">
           <div className="flex flex-col gap-6">
             <Link href="/" className="font-sans text-xs uppercase tracking-[0.2em]">
-              CameraEye
+              Walden View
             </Link>
             <p className="max-w-xs font-serif text-sm leading-relaxed text-muted-foreground">
-              Photography studio exploring the space between light and dark.
-              Fine art prints and digital editions available.
+              거리에서 마주친 장면들을 기록합니다.
+              <br />
+              Street photography from South Korea — fine art prints and digital
+              editions available.
             </p>
           </div>
 
@@ -160,8 +164,8 @@ export function Footer() {
         <InstagramStrip />
 
         <div className="flex flex-col justify-between gap-2 border-t border-border pt-6 text-[10px] uppercase tracking-[0.15em] text-muted-foreground md:flex-row">
-          <span>© {new Date().getFullYear()} CameraEye Studio. All rights reserved.</span>
-          <span>New York · Seoul</span>
+          <span>© {new Date().getFullYear()} Walden View. All rights reserved.</span>
+          <span>South Korea</span>
         </div>
       </div>
     </footer>

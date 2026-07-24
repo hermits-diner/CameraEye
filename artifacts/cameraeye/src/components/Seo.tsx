@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 
 export const SITE_URL = (
-  import.meta.env.VITE_SITE_URL ?? 'https://cameraeye.studio'
+  import.meta.env.VITE_SITE_URL ?? 'https://camera-eye-v2-two.vercel.app'
 ).replace(/\/$/, '');
 
-const SITE_NAME = 'CameraEye';
+const SITE_NAME = 'Walden View';
 const DEFAULT_DESCRIPTION =
-  'CameraEye — photography portfolio of editorial, campaign and personal work. Fine art prints and digital editions available.';
+  'Walden View — street photography from South Korea. 거리에서 마주친 장면들을 기록합니다. Fine art prints and digital editions available.';
 
 interface SeoProps {
   /** Page title; rendered as `<title> · CameraEye`. */
@@ -37,7 +37,7 @@ function upsertMeta(attr: 'name' | 'property', key: string, content: string) {
  */
 export function Seo({ title, description, image, path, type = 'website', jsonLd }: SeoProps) {
   useEffect(() => {
-    const fullTitle = title ? `${title} · ${SITE_NAME}` : `${SITE_NAME} — Photography Portfolio`;
+    const fullTitle = title ? `${title} · ${SITE_NAME}` : `${SITE_NAME} — Street Photography, South Korea`;
     const desc = description ?? DEFAULT_DESCRIPTION;
     const url = path ? `${SITE_URL}${path}` : SITE_URL;
     const img = image

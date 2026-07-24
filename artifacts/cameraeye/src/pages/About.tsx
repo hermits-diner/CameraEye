@@ -15,8 +15,9 @@ export default function About() {
         jsonLd={{
           '@context': 'https://schema.org',
           '@type': 'Person',
-          name: 'CameraEye',
-          jobTitle: 'Photographer',
+          name: 'Walden View',
+          jobTitle: 'Street Photographer',
+          address: { '@type': 'PostalAddress', addressCountry: 'KR' },
           description: about.bio,
         }}
       />
@@ -36,12 +37,17 @@ export default function About() {
         {/* Text */}
         <div className="order-1 lg:order-2 flex flex-col justify-center">
           <h1 className="text-4xl md:text-6xl font-serif tracking-tight font-light mb-12">
-            The space between <br />
-            <span className="text-muted-foreground italic">light and dark</span>.
+            Scenes met <br />
+            <span className="text-muted-foreground italic">on the street</span>.
           </h1>
-          <p className="font-serif text-xl md:text-2xl text-foreground/80 leading-relaxed max-w-xl mb-8">
-            {about.bio}
-          </p>
+          {about.bio.split('\n\n').map((paragraph, i) => (
+            <p
+              key={i}
+              className="font-serif text-lg md:text-xl text-foreground/80 leading-relaxed max-w-xl mb-6 last:mb-8"
+            >
+              {paragraph}
+            </p>
+          ))}
 
           {about.skills && about.skills.length > 0 && (
             <div className="mb-12 flex flex-wrap gap-3">

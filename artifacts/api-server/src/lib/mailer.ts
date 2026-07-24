@@ -29,7 +29,7 @@ function getTransporter(): Transporter | null {
   return transporter;
 }
 
-const FROM = () => process.env.SMTP_FROM ?? "CameraEye <no-reply@cameraeye.studio>";
+const FROM = () => process.env.SMTP_FROM ?? "Walden View <no-reply@waldenview.kr>";
 
 export async function sendMail(options: {
   to: string;
@@ -86,7 +86,7 @@ export async function sendOrderConfirmation(data: OrderEmailData): Promise<void>
 
   await sendMail({
     to: data.email,
-    subject: `[CameraEye] Order ${data.orderNumber} received`,
+    subject: `[Walden View] Order ${data.orderNumber} received`,
     text: `Hello ${data.name},
 
 Thank you for your order. We have received it and will confirm it shortly.
@@ -95,7 +95,7 @@ Order ${data.orderNumber}
 ${itemLines(data.items)}
 Total: ${won(data.total)}${downloadSection}
 
-— CameraEye Studio`,
+— Walden View`,
   });
 
   const adminEmails = (process.env.ADMIN_EMAILS ?? "")
@@ -105,7 +105,7 @@ Total: ${won(data.total)}${downloadSection}
   for (const admin of adminEmails) {
     await sendMail({
       to: admin,
-      subject: `[CameraEye] New order ${data.orderNumber}`,
+      subject: `[Walden View] New order ${data.orderNumber}`,
       text: `New order from ${data.name} <${data.email}>
 
 Order ${data.orderNumber}
@@ -128,23 +128,23 @@ export async function sendOrderStatusUpdate(data: {
     : "";
   await sendMail({
     to: data.email,
-    subject: `[CameraEye] Order ${data.orderNumber} — ${label.en}`,
+    subject: `[Walden View] Order ${data.orderNumber} — ${label.en}`,
     text: `Hello ${data.name},
 
 Your order ${data.orderNumber} is now: ${label.en} (${label.ko})${tracking}
 
-— CameraEye Studio`,
+— Walden View`,
   });
 }
 
 export async function sendNewsletterWelcome(email: string): Promise<void> {
   await sendMail({
     to: email,
-    subject: "[CameraEye] Welcome to the studio newsletter",
+    subject: "[Walden View] Welcome to the studio newsletter",
     text: `Thank you for subscribing.
 
 You'll receive occasional notes about new work, print releases and exhibitions. You can unsubscribe at any time by replying to any newsletter email.
 
-— CameraEye Studio`,
+— Walden View`,
   });
 }

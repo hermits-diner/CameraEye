@@ -297,8 +297,8 @@ export default function ShopProduct() {
 
           <p className="mt-4 text-[11px] leading-relaxed text-muted-foreground">
             {product.type === 'print'
-              ? 'Print orders are confirmed manually within 24 hours. Production takes 5–7 business days before shipping.'
-              : 'Digital files are delivered instantly by email after checkout.'}
+              ? 'Print orders are confirmed manually within 24 hours. Production takes 5–7 business days before shipping. · 프린트 주문은 24시간 내 확인 후 제작(5–7영업일)됩니다.'
+              : 'Digital files are delivered instantly by email after checkout. · 디지털 파일은 결제 직후 이메일로 전달됩니다.'}
           </p>
         </div>
       </div>

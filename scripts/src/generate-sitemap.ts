@@ -9,16 +9,11 @@
 import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
-const SITE_URL = process.env.PUBLIC_SITE_URL ?? "https://cameraeye.studio";
+const SITE_URL = process.env.PUBLIC_SITE_URL ?? "https://camera-eye-v2-two.vercel.app";
 
-// Keep in sync with artifacts/cameraeye/src/data/mockData.ts
-const PROJECT_SLUGS = [
-  "shadows-and-light",
-  "urban-desolation",
-  "brutalism-campaign",
-  "quiet-hours",
-  "form-and-void",
-];
+// Portfolio content lives in Sanity now — add real project slugs here (or
+// swap for a Sanity fetch) as series are published.
+const PROJECT_SLUGS: string[] = [];
 
 // Keep in sync with lib/commerce/src/catalog.ts
 const PRODUCT_SLUGS = [

@@ -32,7 +32,7 @@ export default function MapPage() {
     <PageTransition className="mx-auto max-w-[1800px] px-6 pb-24 pt-32 md:px-12">
       <Seo
         title="Locations"
-        description="Where the photographs were taken — shooting locations of CameraEye's street and personal work, mapped."
+        description="Where the photographs were taken — shooting locations of Walden View's street work, mapped. 촬영 위치 지도."
         path="/map"
       />
       <div className="mb-12">
@@ -40,13 +40,13 @@ export default function MapPage() {
           Locations
         </h1>
         <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">
-          Where the frames were made
+          Where the frames were made · 사진이 만들어진 곳
         </p>
       </div>
 
       {pins.length === 0 ? (
         <p className="text-sm text-muted-foreground">
-          No geotagged photographs yet.
+          아직 위치가 등록된 사진이 없습니다 · No geotagged photographs yet.
         </p>
       ) : (
         <MapView pins={pins} className="h-[70vh] w-full border border-border" />

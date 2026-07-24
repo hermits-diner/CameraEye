@@ -5,7 +5,7 @@ import { schemaTypes } from './schemaTypes';
 
 export default defineConfig({
   name: 'default',
-  title: 'CameraEye',
+  title: 'Walden View',
   projectId: 'vh63tnwo',
   dataset: 'production',
   plugins: [structureTool(), visionTool()],

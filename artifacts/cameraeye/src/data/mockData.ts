@@ -161,9 +161,10 @@ export const mockProjects: MockProject[] = [
 ];
 
 export const aboutData = {
-  bio: 'I am a photographer obsessed with the space between light and dark. My work explores narrative through absence, finding cinematic moments in quiet observations. Based in New York, working globally.',
+  // 임시 소개문 — 실제 작가 소개가 정해지면 Studio의 About 문서에서 교체하세요.
+  bio: '거리에서 마주치는 일상의 장면을 기록합니다. 스쳐 지나가는 순간 속에서 조용한 이야기를 찾습니다.\n\nI photograph everyday scenes met on the street — looking for quiet stories inside passing moments. Based in South Korea.',
   portraitUrl: '/images/about-portrait.jpg',
-  skills: ['Editorial', 'Campaign', 'Portrait', 'Fine art printing'],
-  contactEmail: 'studio@cameraeye.com',
-  instagramHandle: 'cameraeye.studio',
+  skills: ['Street', 'Documentary', 'Fine art printing'],
+  contactEmail: 'hermitsdiner@gmail.com',
+  instagramHandle: 'hermitsdiner',
 };

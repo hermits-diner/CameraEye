@@ -1,6 +1,6 @@
-# CameraEye
+# CameraEye (brand: Walden View)
 
-Photography portfolio + print shop: editorial/campaign/personal series with series notes, capture-format tags and shooting-location maps, plus a commerce layer for limited-edition prints and digital downloads (manual order confirmation, no online payment yet).
+Street-photography portfolio + print shop for **Walden View**, a street photographer based in South Korea (contact hermitsdiner@gmail.com, IG @hermitsdiner). Series notes, capture-format tags and shooting-location maps, plus a commerce layer for limited-edition prints and digital downloads (manual order confirmation, no online payment yet). Site copy is bilingual (EN primary, KO secondary); the artist bio is a placeholder until provided.
 
 ## Run & Operate
 

@@ -502,8 +502,8 @@ export default function Checkout() {
               </Button>
               <p className="text-[11px] leading-relaxed text-muted-foreground">
                 {hasPrint
-                  ? 'Payment is arranged after manual confirmation — we will contact you with payment details within 24 hours.'
-                  : 'Digital orders are delivered immediately after checkout.'}
+                  ? 'Payment is arranged after manual confirmation — we will contact you with payment details within 24 hours. · 주문 확인 후 24시간 내 결제 안내를 드립니다.'
+                  : 'Digital orders are delivered immediately after checkout. · 디지털 주문은 결제 직후 전달됩니다.'}
               </p>
             </form>
           </Form>

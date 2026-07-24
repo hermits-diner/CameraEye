@@ -53,13 +53,13 @@ export default function Home() {
   return (
     <PageTransition>
       <Seo
-        description="CameraEye — photography portfolio exploring the space between light and dark. Editorial, campaign and personal work; fine art prints available."
+        description="Walden View — street photography from South Korea. 거리에서 마주친 장면들을 기록합니다. Fine art prints and digital editions available."
         path="/"
         jsonLd={{
           '@context': 'https://schema.org',
           '@type': 'WebSite',
-          name: 'CameraEye',
-          description: 'Photography portfolio and print shop',
+          name: 'Walden View',
+          description: 'Street photography portfolio and print shop, South Korea',
         }}
       />
       <div ref={containerRef} className="bg-background text-foreground relative">
@@ -79,12 +79,15 @@ export default function Home() {
           </div>
           <h1
             ref={titleRef}
-            className="text-6xl md:text-8xl lg:text-[10rem] font-serif tracking-tight z-10 font-light"
+            className="text-6xl md:text-8xl lg:text-[9rem] font-serif tracking-tight z-10 font-light"
           >
-            CameraEye
+            Walden View
           </h1>
           <p className="mt-8 text-sm uppercase tracking-[0.3em] z-10 opacity-70 font-sans">
-            Selected Works
+            Street Photography · South Korea
+          </p>
+          <p className="mt-3 text-xs tracking-[0.2em] z-10 opacity-50 font-sans">
+            거리에서 마주친 장면들
           </p>
         </section>
 
@@ -124,7 +127,8 @@ export default function Home() {
               </div>
             ))}
             <div className="film-item w-[30vw] flex-shrink-0 flex flex-col justify-center items-start px-12">
-              <h3 className="text-4xl font-serif mb-6">Explore the full archive</h3>
+              <h3 className="text-4xl font-serif mb-2">Explore the full archive</h3>
+              <p className="text-sm text-muted-foreground mb-6">전체 아카이브 보기</p>
               <Link
                 href="/projects"
                 className="flex items-center gap-4 uppercase text-xs tracking-widest hover:opacity-70 transition-opacity"

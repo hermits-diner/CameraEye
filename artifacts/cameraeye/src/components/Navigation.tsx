@@ -28,7 +28,7 @@ export function Navigation() {
       <header className="fixed left-0 right-0 top-0 z-50 p-6 text-white mix-blend-difference">
         <nav className="mx-auto flex w-full items-center justify-between text-[11px] uppercase tracking-[0.2em]">
           <Link href="/" className="font-sans transition-opacity hover:opacity-70" data-testid="link-logo">
-            CameraEye
+            Walden View
           </Link>
 
           {/* Desktop links */}
@@ -103,7 +103,7 @@ export function Navigation() {
             transition={{ duration: 0.25 }}
           >
             <div className="flex items-center justify-between p-6">
-              <span className="text-[11px] uppercase tracking-[0.2em]">CameraEye</span>
+              <span className="text-[11px] uppercase tracking-[0.2em]">Walden View</span>
               <button
                 type="button"
                 onClick={() => setMenuOpen(false)}

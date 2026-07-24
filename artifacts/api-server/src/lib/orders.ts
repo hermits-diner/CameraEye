@@ -17,7 +17,7 @@ export function generateOrderNumber(): string {
   const m = String(now.getMonth() + 1).padStart(2, "0");
   const d = String(now.getDate()).padStart(2, "0");
   const suffix = randomBytes(3).toString("hex").toUpperCase();
-  return `CE-${y}${m}${d}-${suffix}`;
+  return `WV-${y}${m}${d}-${suffix}`;
 }
 
 export function generateDownloadToken(): string {

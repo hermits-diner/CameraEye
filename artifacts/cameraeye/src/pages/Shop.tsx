@@ -45,7 +45,7 @@ export default function Shop() {
     <PageTransition className="mx-auto max-w-[1800px] px-6 pb-24 pt-32 md:px-12">
       <Seo
         title="Prints & Editions"
-        description="Fine art prints and digital editions by CameraEye — limited, signed and numbered giclée prints on archival paper."
+        description="Fine art prints and digital editions by Walden View — limited, signed and numbered giclée prints on archival paper. 아카이벌 피그먼트 프린트."
         path="/shop"
       />
 
@@ -55,7 +55,7 @@ export default function Shop() {
             Prints & Editions
           </h1>
           <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">
-            Archival prints, signed and numbered
+            Archival prints, signed and numbered · 서명·에디션 프린트
           </p>
         </div>
 

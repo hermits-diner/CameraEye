@@ -31,14 +31,16 @@ export default function Projects() {
     <PageTransition className="pt-32 pb-24 px-6 md:px-12 max-w-[1800px] mx-auto">
       <Seo
         title="Archive"
-        description="Selected photography works 2022–2024 — editorial, portrait, campaign and personal series by CameraEye."
+        description="Selected street photography series by Walden View — 셀렉티드 시리즈 아카이브."
         path="/projects"
       />
       {/* Header & Filter */}
       <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
         <div>
           <h1 className="text-5xl md:text-7xl font-serif tracking-tight font-light mb-4">Archive</h1>
-          <p className="text-muted-foreground text-sm uppercase tracking-[0.2em]">Selected works 2022–2024</p>
+          <p className="text-muted-foreground text-sm uppercase tracking-[0.2em]">
+            Selected works · 셀렉티드 시리즈
+          </p>
         </div>
 
         <div className="flex gap-6 overflow-x-auto pb-2 w-full md:w-auto scrollbar-hide">

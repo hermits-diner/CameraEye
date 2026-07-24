@@ -1,110 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://cameraeye.studio/</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://camera-eye-v2-two.vercel.app/</loc>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://cameraeye.studio/projects</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://camera-eye-v2-two.vercel.app/projects</loc>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cameraeye.studio/shop</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://camera-eye-v2-two.vercel.app/shop</loc>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cameraeye.studio/map</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://camera-eye-v2-two.vercel.app/map</loc>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://cameraeye.studio/about</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://camera-eye-v2-two.vercel.app/about</loc>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://cameraeye.studio/contact</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://camera-eye-v2-two.vercel.app/contact</loc>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://cameraeye.studio/projects/shadows-and-light</loc>
-    <lastmod>2026-07-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cameraeye.studio/projects/urban-desolation</loc>
-    <lastmod>2026-07-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cameraeye.studio/projects/brutalism-campaign</loc>
-    <lastmod>2026-07-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cameraeye.studio/projects/quiet-hours</loc>
-    <lastmod>2026-07-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cameraeye.studio/projects/form-and-void</loc>
-    <lastmod>2026-07-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cameraeye.studio/shop/shadows-and-light-print</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://camera-eye-v2-two.vercel.app/shop/shadows-and-light-print</loc>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cameraeye.studio/shop/urban-desolation-print</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://camera-eye-v2-two.vercel.app/shop/urban-desolation-print</loc>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cameraeye.studio/shop/brutalism-print</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://camera-eye-v2-two.vercel.app/shop/brutalism-print</loc>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cameraeye.studio/shop/form-and-void-print</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://camera-eye-v2-two.vercel.app/shop/form-and-void-print</loc>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cameraeye.studio/shop/quiet-hours-print</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://camera-eye-v2-two.vercel.app/shop/quiet-hours-print</loc>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cameraeye.studio/shop/urban-desolation-digital</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://camera-eye-v2-two.vercel.app/shop/urban-desolation-digital</loc>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cameraeye.studio/shop/shadows-and-light-digital</loc>
-    <lastmod>2026-07-23</lastmod>
+    <loc>https://camera-eye-v2-two.vercel.app/shop/shadows-and-light-digital</loc>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
