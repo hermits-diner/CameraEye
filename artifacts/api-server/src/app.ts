@@ -36,4 +36,18 @@ app.use(cookieParser());
 
 app.use("/api", attachUser, router);
 
+// JSON error responses (Express 5 forwards rejected async handlers here).
+app.use(
+  (
+    err: unknown,
+    req: express.Request,
+    res: express.Response,
+    _next: express.NextFunction,
+  ) => {
+    req.log?.error({ err }, "unhandled route error");
+    if (res.headersSent) return;
+    res.status(500).json({ message: "Internal server error" });
+  },
+);
+
 export default app;
