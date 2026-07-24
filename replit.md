@@ -34,7 +34,8 @@ Photography portfolio + print shop: editorial/campaign/personal series with seri
 - `artifacts/api-server/src/lib` — auth (sessions/scrypt), mailer (SMTP or log fallback), orders (order numbers, sold counts)
 - `artifacts/cameraeye/src/lib/content/adapter.ts` — content adapter: Sanity when `VITE_SANITY_PROJECT_ID` set, otherwise `src/data/mockData.ts`
 - `artifacts/cameraeye/src/pages` — Home, Projects, ProjectDetail (lightbox/story/map/prints), Shop, ShopProduct, Checkout, Login/Register, Account, Admin, MapPage
-- `artifacts/cameraeye/sanity/schemas` — Sanity Studio schema files (copy into a Studio project; not compiled here)
+- `artifacts/cameraeye/sanity/schemas` — Sanity Studio schema files (mirrored into `studio/schemaTypes`)
+- `studio/` — Sanity Studio app (project vh63tnwo / production, hosted at https://cameraeye.sanity.studio). `pnpm --filter @workspace/studio run deploy` redeploys it; `run seed` re-seeds the mock content (idempotent).
 - `scripts/src/generate-sitemap.ts` — writes `artifacts/cameraeye/public/sitemap.xml`
 
 ## Architecture decisions
@@ -56,6 +57,11 @@ Photography portfolio + print shop: editorial/campaign/personal series with seri
 ## User preferences
 
 - 결제 연동(Stripe 등 온라인 결제)은 **의도적으로 제외** — 프린트는 수동 주문 확인, 디지털은 자동 다운로드 발송 방식 유지.
+
+## Content management
+
+- Portfolio/About content lives in Sanity (Studio: https://cameraeye.sanity.studio). The web app reads it when `VITE_SANITY_PROJECT_ID` (=vh63tnwo) is set at build time; otherwise it falls back to `src/data/mockData.ts`.
+- Shop products/prices stay in code (`lib/commerce/src/catalog.ts`) by design — the server must own pricing.
 
 ## Deployment
 

@@ -1,0 +1,22 @@
+{
+  "name": "@workspace/studio",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "sanity dev",
+    "build-studio": "sanity build",
+    "deploy": "sanity deploy",
+    "seed": "sanity exec seed.mjs --with-user-token"
+  },
+  "dependencies": {
+    "@sanity/vision": "^4.22.0",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "sanity": "^4.22.0",
+    "styled-components": "^6.1.15"
+  },
+  "devDependencies": {
+    "@types/react": "catalog:",
+    "typescript": "~5.9.3"
+  }
+}
